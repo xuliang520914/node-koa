@@ -1,2 +1,6 @@
 /node_modules/
 /.vscode/
+/.idea/island.iml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/.gitignore
