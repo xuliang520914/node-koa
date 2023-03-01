@@ -7,4 +7,4 @@ router.post('/v1/:id/classic/latest', async(ctx, next) => {
     
 })
 
-module.exports = router
+module.exports = router 

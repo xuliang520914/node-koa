@@ -1,14 +1,17 @@
+const config = require("../config/config")
 const { HttpException } = require("../core/http-exception")
 
 const catchErr = async(ctx, next) => {
     try{
-        console.log("begin")
         await next()
-        console.log("end")
     } catch (err) {
-        console.log("catch")
-        if (err instanceof HttpException) {
-            console.log("Error")
+        const isDev = config.environment === 'development'
+        const isHttpException = err instanceof HttpException
+
+        if (isDev && !isHttpException) {
+            throw err
+        }
+        if (isHttpException) {
             ctx.body = {
                 msg: err.msg,
                 errorCode: err.errorCode,

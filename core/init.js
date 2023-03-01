@@ -5,6 +5,7 @@ class InitManager {
     static initCore(app) {
         InitManager.app = app
         InitManager.initLoadRouter()
+        InitManager.loadConfig()
     }
 
     static initLoadRouter() {
@@ -17,6 +18,13 @@ class InitManager {
             }
         }
 
+    }
+
+    // 导入配置数据 global
+    static loadConfig(path = '') {
+        const configPath = path || process.cwd() + '/config/config.js'
+        const config = require(configPath)
+        global.config = config
     }
 }
 
